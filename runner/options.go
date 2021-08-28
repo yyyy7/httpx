@@ -123,6 +123,7 @@ type Options struct {
 	OutputMatchContentLength  string
 	OutputFilterStatusCode    string
 	OutputFilterContentLength string
+	LongerContentLength       int
 	InputRawRequest           string
 	rawRequest                string
 	RequestBody               string
@@ -260,6 +261,7 @@ func ParseOptions() *Options {
 	flag.BoolVar(&options.Probe, "probe", false, "Display probe status")
 	flag.BoolVar(&options.Resume, "resume", false, "Resume scan using resume.cfg")
 	flag.BoolVar(&options.ExcludeCDN, "exclude-cdn", false, "Skip full port scans for CDNs (only checks for 80,443)")
+	flag.IntVar(&options.LongerContentLength, "longer-content-length", 0, "grater than content length")
 
 	flag.Parse()
 

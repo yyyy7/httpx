@@ -424,6 +424,10 @@ func (r *Runner) RunEnumeration() {
 			if len(r.options.filterStatusCode) > 0 && slice.IntSliceContains(r.options.filterStatusCode, resp.StatusCode) {
 				continue
 			}
+			if r.options.LongerContentLength > 0 && r.options.LongerContentLength > resp.ContentLength {
+				continue
+			}
+
 			if len(r.options.filterContentLength) > 0 && slice.IntSliceContains(r.options.filterContentLength, resp.ContentLength) {
 				continue
 			}
